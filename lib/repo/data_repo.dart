@@ -8,17 +8,17 @@ import '../utils/constant/api_url.dart';
 class DataRepo {
   Future<List<DataModal>?> getData() async {
     String url = ApiUrl.baseurl;
-    final result = await http.Client().get(Uri.parse(url));
-    if (result.statusCode != 200) {
+    final res = await http.Client().get(Uri.parse(url));
+    if (res.statusCode != 200) {
       return null;
     } else {
-      Iterable models = jsonDecode(result.body);
-      List<DataModal> dataModels = [];
+      Iterable models = jsonDecode(res.body);
+      List<DataModal> result = [];
       for (var model in models) {
         DataModal dataModel = DataModal.fromJson(model);
-        dataModels.add(dataModel);
+        result.add(dataModel);
       }
-      return dataModels;
+      return result;
     }
   }
 }

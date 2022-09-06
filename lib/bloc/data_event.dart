@@ -1,6 +1,8 @@
 part of 'data_bloc.dart';
 
-@freezed
-class DataEvent with _$DataEvent {
-  const factory DataEvent.started() = _Started;
+abstract class DataEvent extends Equatable {}
+
+class LoadDataEvent extends DataEvent {
+  @override
+  List<Object?> get props => [];
 }
