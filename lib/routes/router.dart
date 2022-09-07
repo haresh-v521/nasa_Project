@@ -1,8 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:freezed_bloc_demo/views/about_program.dart';
 import 'package:freezed_bloc_demo/views/details.dart';
 import 'package:freezed_bloc_demo/views/home_screen.dart';
 import 'package:freezed_bloc_demo/views/splash.dart';
+
+import '../modals/data_modal.dart';
 
 part 'router.gr.dart';
 
@@ -24,6 +27,11 @@ part 'router.gr.dart';
       path: 'details-page',
       name: 'DetailsRoute',
       page: DetailsPage,
+    ),
+    AutoRoute(
+      // path: 'details-page',
+      // name: 'DetailsRoute',
+      page: ProgramDetailPage,
     ),
   ],
 )

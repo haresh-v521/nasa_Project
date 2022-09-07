@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_bloc_demo/custom_widgets/text.dart';
 import 'package:freezed_bloc_demo/routes/router.dart';
+import 'package:freezed_bloc_demo/utils/constant/app_color.dart';
 import 'package:freezed_bloc_demo/utils/constant/app_string.dart';
 
 class SplashPage extends StatefulWidget {
@@ -29,11 +30,11 @@ class _SplashPageState extends State<SplashPage> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Image.asset('assets/gif/logo.gif'),
-          const CustomText(
+          CustomText(
             text: AppString.welcome,
             fontWeight: FontWeight.bold,
             fontSize: 25,
-            color: Colors.indigo,
+            color: AppColor.primary,
           )
         ],
       ),

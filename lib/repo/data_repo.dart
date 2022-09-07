@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:freezed_bloc_demo/modals/data_modal.dart';
+import 'package:freezed_bloc_demo/modals/detail_modal.dart';
 import 'package:http/http.dart' as http;
 
 import '../utils/constant/api_url.dart';
@@ -19,6 +20,18 @@ class DataRepo {
         result.add(dataModel);
       }
       return result;
+    }
+  }
+
+  static Future<DetailModal?> getDetailData(String url) async {
+    final res = await http.Client().get(Uri.parse(url));
+    if (res.statusCode != 200) {
+      return null;
+    } else {
+      Map<String, dynamic> models = jsonDecode(res.body);
+      return DetailModal.fromJson(jsonDecode(res.body));
+      //print("..... : ${dataModel.title}");
+      // ? return models;
     }
   }
 }

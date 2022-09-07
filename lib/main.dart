@@ -5,16 +5,19 @@ import 'package:freezed_bloc_demo/repo/data_repo.dart';
 import 'package:freezed_bloc_demo/routes/router.dart';
 
 void main() {
-  runApp(BlocProvider<DataBloc>(
-    create: (context) => DataBloc(
-      DataRepo(),
+  runApp(
+    BlocProvider<DataBloc>(
+      create: (context) => DataBloc(
+        DataRepo(),
+      ),
+      child: MyApp(),
     ),
-    child: MyApp(),
-  ));
+  );
 }
 
 class MyApp extends StatelessWidget {
   final appRouter = AppRouter();
+
   MyApp({super.key});
 
   @override

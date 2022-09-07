@@ -26,8 +26,16 @@ class _$AppRouter extends RootStackRouter {
           routeData: routeData, child: const HomePage());
     },
     DetailsRoute.name: (routeData) {
+      final args = routeData.argsAs<DetailsRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData, child: const DetailsPage());
+          routeData: routeData,
+          child: DetailsPage(key: args.key, apiResult: args.apiResult));
+    },
+    ProgramDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<ProgramDetailRouteArgs>();
+      return MaterialPageX<dynamic>(
+          routeData: routeData,
+          child: ProgramDetailPage(key: args.key, url: args.url));
     }
   };
 
@@ -35,7 +43,8 @@ class _$AppRouter extends RootStackRouter {
   List<RouteConfig> get routes => [
         RouteConfig(SplashRoute.name, path: '/'),
         RouteConfig(HomeRoute.name, path: '/home-page'),
-        RouteConfig(DetailsRoute.name, path: 'details-page')
+        RouteConfig(DetailsRoute.name, path: 'details-page'),
+        RouteConfig(ProgramDetailRoute.name, path: '/program-detail-page')
       ];
 }
 
@@ -57,8 +66,48 @@ class HomeRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [DetailsPage]
-class DetailsRoute extends PageRouteInfo<void> {
-  const DetailsRoute() : super(DetailsRoute.name, path: 'details-page');
+class DetailsRoute extends PageRouteInfo<DetailsRouteArgs> {
+  DetailsRoute({Key? key, required DataModal apiResult})
+      : super(DetailsRoute.name,
+            path: 'details-page',
+            args: DetailsRouteArgs(key: key, apiResult: apiResult));
 
   static const String name = 'DetailsRoute';
+}
+
+class DetailsRouteArgs {
+  const DetailsRouteArgs({this.key, required this.apiResult});
+
+  final Key? key;
+
+  final DataModal apiResult;
+
+  @override
+  String toString() {
+    return 'DetailsRouteArgs{key: $key, apiResult: $apiResult}';
+  }
+}
+
+/// generated route for
+/// [ProgramDetailPage]
+class ProgramDetailRoute extends PageRouteInfo<ProgramDetailRouteArgs> {
+  ProgramDetailRoute({Key? key, required String url})
+      : super(ProgramDetailRoute.name,
+            path: '/program-detail-page',
+            args: ProgramDetailRouteArgs(key: key, url: url));
+
+  static const String name = 'ProgramDetailRoute';
+}
+
+class ProgramDetailRouteArgs {
+  const ProgramDetailRouteArgs({this.key, required this.url});
+
+  final Key? key;
+
+  final String url;
+
+  @override
+  String toString() {
+    return 'ProgramDetailRouteArgs{key: $key, url: $url}';
+  }
 }
