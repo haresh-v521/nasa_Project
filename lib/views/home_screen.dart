@@ -85,10 +85,11 @@ class _HomePageState extends State<HomePage> {
               );
             },
             child: CustomContainer(
-              height: MediaQuery.of(context).size.height / 2.5,
+              height: MediaQuery.of(context).size.height / 2.1,
               width: MediaQuery.of(context).size.width / 2,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Align(
                     alignment: Alignment.topRight,
@@ -104,22 +105,25 @@ class _HomePageState extends State<HomePage> {
                     fontWeight: FontWeight.w800,
                     fontSize: 16,
                   ),
-                  Card(
-                    elevation: 2,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Container(
-                      height: MediaQuery.of(context).size.height / 6,
-                      width: MediaQuery.of(context).size.width / 1.8,
-                      decoration: BoxDecoration(
+                  Align(
+                    alignment: Alignment.center,
+                    child: Card(
+                      elevation: 2,
+                      shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
-                        image: DecorationImage(
-                          isAntiAlias: true,
-                          filterQuality: FilterQuality.high,
-                          fit: BoxFit.fill,
-                          image: NetworkImage(
-                            'https://techport.nasa.gov/view/${dataModel.projectid}/image',
+                      ),
+                      child: Container(
+                        height: MediaQuery.of(context).size.height / 6,
+                        width: MediaQuery.of(context).size.width / 1.8,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          image: DecorationImage(
+                            isAntiAlias: true,
+                            filterQuality: FilterQuality.high,
+                            fit: BoxFit.fill,
+                            image: NetworkImage(
+                              'https://techport.nasa.gov/view/${dataModel.projectid}/image',
+                            ),
                           ),
                         ),
                       ),
@@ -135,7 +139,7 @@ class _HomePageState extends State<HomePage> {
                   const Align(
                     alignment: Alignment.bottomRight,
                     child: CustomText(
-                      text: 'Tap to Read more...',
+                      text: AppString.readMore,
                       color: Colors.blue,
                       fontWeight: FontWeight.w600,
                     ),

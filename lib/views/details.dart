@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_bloc_demo/custom_widgets/custom_button.dart';
 import 'package:freezed_bloc_demo/modals/detail_modal.dart';
 import 'package:freezed_bloc_demo/repo/data_repo.dart';
+import 'package:freezed_bloc_demo/routes/router.dart';
 import 'package:freezed_bloc_demo/utils/constant/app_color.dart';
 import 'package:freezed_bloc_demo/utils/constant/app_string.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -29,7 +31,7 @@ class DetailsPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,7 +75,7 @@ class DetailsPage extends StatelessWidget {
                 ),
               ),
               const CustomText(
-                text: "Program : ",
+                text: AppString.program,
                 textAlign: TextAlign.start,
                 fontSize: 21,
                 fontWeight: FontWeight.w500,
@@ -85,7 +87,7 @@ class DetailsPage extends StatelessWidget {
                 color: Colors.grey.shade600,
               ),
               const CustomText(
-                text: "PrimaryTax : ",
+                text: AppString.programTax,
                 textAlign: TextAlign.start,
                 fontSize: 21,
                 fontWeight: FontWeight.w500,
@@ -97,7 +99,7 @@ class DetailsPage extends StatelessWidget {
                 color: Colors.grey.shade600,
               ),
               const CustomText(
-                text: "Description : ",
+                text: AppString.description,
                 textAlign: TextAlign.start,
                 fontSize: 21,
                 fontWeight: FontWeight.w500,
@@ -139,10 +141,12 @@ class DetailsPage extends StatelessWidget {
                     Flexible(
                       child: CustomButton(
                         onTap: () async {
-                          DetailModal? dm = await DataRepo.getDetailData(
-                              apiResult.projectapiurl!['url']);
-                          print(dm!.title);
-                          print("......${apiResult.projectapiurl!['url']}");
+                          DetailModal? detailModal =
+                              await DataRepo.getDetailData(
+                                  apiResult.projectapiurl!['url']);
+                          context.router.push(
+                            ProgramDetailRoute(detailModal: detailModal),
+                          );
                         },
                         width: MediaQuery.of(context).size.width / 2.2,
                         color: AppColor.primary,

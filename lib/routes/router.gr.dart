@@ -35,7 +35,15 @@ class _$AppRouter extends RootStackRouter {
       final args = routeData.argsAs<ProgramDetailRouteArgs>();
       return MaterialPageX<dynamic>(
           routeData: routeData,
-          child: ProgramDetailPage(key: args.key, url: args.url));
+          child:
+              ProgramDetailPage(key: args.key, detailModal: args.detailModal));
+    },
+    AdditionalInfoRoute.name: (routeData) {
+      final args = routeData.argsAs<AdditionalInfoRouteArgs>();
+      return MaterialPageX<dynamic>(
+          routeData: routeData,
+          child:
+              AdditionalInfoPage(key: args.key, detailModal: args.detailModal));
     }
   };
 
@@ -44,7 +52,8 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(SplashRoute.name, path: '/'),
         RouteConfig(HomeRoute.name, path: '/home-page'),
         RouteConfig(DetailsRoute.name, path: 'details-page'),
-        RouteConfig(ProgramDetailRoute.name, path: '/program-detail-page')
+        RouteConfig(ProgramDetailRoute.name, path: '/program-detail-page'),
+        RouteConfig(AdditionalInfoRoute.name, path: '/additional-info-page')
       ];
 }
 
@@ -91,23 +100,47 @@ class DetailsRouteArgs {
 /// generated route for
 /// [ProgramDetailPage]
 class ProgramDetailRoute extends PageRouteInfo<ProgramDetailRouteArgs> {
-  ProgramDetailRoute({Key? key, required String url})
+  ProgramDetailRoute({Key? key, required DetailModal? detailModal})
       : super(ProgramDetailRoute.name,
             path: '/program-detail-page',
-            args: ProgramDetailRouteArgs(key: key, url: url));
+            args: ProgramDetailRouteArgs(key: key, detailModal: detailModal));
 
   static const String name = 'ProgramDetailRoute';
 }
 
 class ProgramDetailRouteArgs {
-  const ProgramDetailRouteArgs({this.key, required this.url});
+  const ProgramDetailRouteArgs({this.key, required this.detailModal});
 
   final Key? key;
 
-  final String url;
+  final DetailModal? detailModal;
 
   @override
   String toString() {
-    return 'ProgramDetailRouteArgs{key: $key, url: $url}';
+    return 'ProgramDetailRouteArgs{key: $key, detailModal: $detailModal}';
+  }
+}
+
+/// generated route for
+/// [AdditionalInfoPage]
+class AdditionalInfoRoute extends PageRouteInfo<AdditionalInfoRouteArgs> {
+  AdditionalInfoRoute({Key? key, required DetailModal? detailModal})
+      : super(AdditionalInfoRoute.name,
+            path: '/additional-info-page',
+            args: AdditionalInfoRouteArgs(key: key, detailModal: detailModal));
+
+  static const String name = 'AdditionalInfoRoute';
+}
+
+class AdditionalInfoRouteArgs {
+  const AdditionalInfoRouteArgs({this.key, required this.detailModal});
+
+  final Key? key;
+
+  final DetailModal? detailModal;
+
+  @override
+  String toString() {
+    return 'AdditionalInfoRouteArgs{key: $key, detailModal: $detailModal}';
   }
 }

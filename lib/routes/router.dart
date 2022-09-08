@@ -6,6 +6,8 @@ import 'package:freezed_bloc_demo/views/home_screen.dart';
 import 'package:freezed_bloc_demo/views/splash.dart';
 
 import '../modals/data_modal.dart';
+import '../modals/detail_modal.dart';
+import '../views/additional_tax_info.dart';
 
 part 'router.gr.dart';
 
@@ -29,9 +31,14 @@ part 'router.gr.dart';
       page: DetailsPage,
     ),
     AutoRoute(
-      // path: 'details-page',
-      // name: 'DetailsRoute',
+      path: '/program-detail-page',
+      name: 'ProgramDetailRoute',
       page: ProgramDetailPage,
+    ),
+    AutoRoute(
+      path: '/additional-info-page',
+      name: 'AdditionalInfoRoute',
+      page: AdditionalInfoPage,
     ),
   ],
 )
