@@ -13,7 +13,7 @@ class AdditionalInfoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List? apiData = detailModal?.project.additionalTaxonomyNodes;
+    List<TaxonomyNode>? apiData = detailModal?.project.additionalTaxonomyNodes;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -26,7 +26,7 @@ class AdditionalInfoPage extends StatelessWidget {
       body: (apiData == null)
           ? const Center(
               child: CustomText(
-                text: 'oops! 😭 No Data Available',
+                text: 'oops! 😅 No Data Available',
                 fontSize: 20,
               ),
             )
@@ -40,12 +40,12 @@ class AdditionalInfoPage extends StatelessWidget {
                     children: [
                       CustomText(
                         text:
-                            '(${index + 1})  ${apiData[index]['title']}(${apiData[index]['code']})',
+                            '(${index + 1})  ${apiData[index].title}(${apiData[index].code})',
                         fontSize: 19,
                         textAlign: TextAlign.start,
                       ),
                       CustomText(
-                        text: "${apiData[index]['definition']}",
+                        text: "${apiData[index].definition}",
                         textAlign: TextAlign.start,
                         fontSize: 15,
                         color: Colors.grey.shade600,

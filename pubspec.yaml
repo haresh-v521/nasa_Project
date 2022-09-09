@@ -36,7 +36,6 @@ dependencies:
   flutter_bloc: ^8.1.1
   http: ^0.13.5
   url_launcher: ^6.1.5
-  freezed_annotation: ^2.1.0
   json_annotation: ^4.6.0
   equatable: ^2.0.5
   google_fonts: ^3.0.1
@@ -50,6 +49,7 @@ dev_dependencies:
   auto_route_generator: ^5.0.2
   build_runner: ^2.2.0
   freezed: ^2.1.0+1
+  freezed_annotation: ^2.1.0
   json_serializable: ^6.3.1
   dart_code_metrics: ^4.17.1
 

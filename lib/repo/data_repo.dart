@@ -28,7 +28,6 @@ class DataRepo {
     if (res.statusCode != 200) {
       return null;
     } else {
-      Map<String, dynamic> models = jsonDecode(res.body);
       DetailModal detailModal = DetailModal.fromJson(jsonDecode(res.body));
       return detailModal;
       //print("..... : ${dataModel.title}");

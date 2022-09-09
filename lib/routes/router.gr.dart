@@ -44,6 +44,13 @@ class _$AppRouter extends RootStackRouter {
           routeData: routeData,
           child:
               AdditionalInfoPage(key: args.key, detailModal: args.detailModal));
+    },
+    ManagementDataRoute.name: (routeData) {
+      final args = routeData.argsAs<ManagementDataRouteArgs>();
+      return MaterialPageX<dynamic>(
+          routeData: routeData,
+          child:
+              ManagementDataPage(key: args.key, detailModal: args.detailModal));
     }
   };
 
@@ -53,7 +60,8 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(HomeRoute.name, path: '/home-page'),
         RouteConfig(DetailsRoute.name, path: 'details-page'),
         RouteConfig(ProgramDetailRoute.name, path: '/program-detail-page'),
-        RouteConfig(AdditionalInfoRoute.name, path: '/additional-info-page')
+        RouteConfig(AdditionalInfoRoute.name, path: '/additional-info-page'),
+        RouteConfig(ManagementDataRoute.name, path: '/management-data-page')
       ];
 }
 
@@ -142,5 +150,29 @@ class AdditionalInfoRouteArgs {
   @override
   String toString() {
     return 'AdditionalInfoRouteArgs{key: $key, detailModal: $detailModal}';
+  }
+}
+
+/// generated route for
+/// [ManagementDataPage]
+class ManagementDataRoute extends PageRouteInfo<ManagementDataRouteArgs> {
+  ManagementDataRoute({Key? key, required DetailModal? detailModal})
+      : super(ManagementDataRoute.name,
+            path: '/management-data-page',
+            args: ManagementDataRouteArgs(key: key, detailModal: detailModal));
+
+  static const String name = 'ManagementDataRoute';
+}
+
+class ManagementDataRouteArgs {
+  const ManagementDataRouteArgs({this.key, required this.detailModal});
+
+  final Key? key;
+
+  final DetailModal? detailModal;
+
+  @override
+  String toString() {
+    return 'ManagementDataRouteArgs{key: $key, detailModal: $detailModal}';
   }
 }

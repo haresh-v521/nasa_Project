@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:freezed_bloc_demo/views/about_program.dart';
 import 'package:freezed_bloc_demo/views/details.dart';
 import 'package:freezed_bloc_demo/views/home_screen.dart';
+import 'package:freezed_bloc_demo/views/management_data.dart';
 import 'package:freezed_bloc_demo/views/splash.dart';
 
 import '../modals/data_modal.dart';
@@ -39,6 +40,11 @@ part 'router.gr.dart';
       path: '/additional-info-page',
       name: 'AdditionalInfoRoute',
       page: AdditionalInfoPage,
+    ),
+    AutoRoute(
+      // path: '/additional-info-page',
+      // name: 'AdditionalInfoRoute',
+      page: ManagementDataPage,
     ),
   ],
 )

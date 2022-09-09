@@ -19,26 +19,26 @@ class Project with _$Project {
     required String? acronym,
     required int? projectId,
     required String? title,
-    required List? /*<TaxonomyNode>*/ primaryTaxonomyNodes,
-    required List? /*<TaxonomyNode>*/ additionalTaxonomyNodes,
+    required List<TaxonomyNode>? primaryTaxonomyNodes,
+    required List<TaxonomyNode>? additionalTaxonomyNodes,
     required int? startTrl,
     required int? currentTrl,
     required int? endTrl,
     required String? benefits,
     required String? description,
-    required List? /*<SupportedMission>*/ destinations,
+    required List<SupportedMission> destinations,
     required Map<String, dynamic>? supportedMission,
     required int? startYear,
     required int? startMonth,
     required int? endYear,
     required int? endMonth,
     required String? statusDescription,
-    required List? /*<CoInvestigator>*/ principalInvestigators,
-    required List? /*<CoInvestigator>*/ programManagers,
-    required List? /*<CoInvestigator>*/ projectManagers,
-    required List? /*<CoInvestigator>*/ coInvestigators,
+    required List<CoInvestigator>? principalInvestigators,
+    required List<CoInvestigator>? programManagers,
+    required List<CoInvestigator>? projectManagers,
+    required List<CoInvestigator>? coInvestigators,
     required String? website,
-    required List? /*<LibraryItem>*/ libraryItems,
+    required List<LibraryItem>? libraryItems,
     required List<dynamic>? transitions,
     required Map<String, dynamic>? primaryImage,
     required Map<String, dynamic>? responsibleMd,
@@ -55,9 +55,8 @@ class Project with _$Project {
       _$ProjectFromJson(json);
 }
 
-/*
 @freezed
-class ResponsibleMd extends _$ResponsibleMd {
+class ResponsibleMd with _$ResponsibleMd {
   factory ResponsibleMd({
     required String? acronym,
     required bool? canUserEdit,
@@ -76,7 +75,7 @@ class ResponsibleMd extends _$ResponsibleMd {
 }
 
 @freezed
-class LeadOrganization extends _$LeadOrganization {
+class LeadOrganization with _$LeadOrganization {
   factory LeadOrganization({
     required String? acronym,
     required bool? canUserEdit,
@@ -88,7 +87,7 @@ class LeadOrganization extends _$LeadOrganization {
     required int? organizationId,
     required String? organizationName,
     required String? organizationType,
-    required State? stateTerritory,
+    required States? stateTerritory,
     required int? stateTerritoryId,
     required bool? naorganization,
     required String? organizationTypePretty,
@@ -99,7 +98,7 @@ class LeadOrganization extends _$LeadOrganization {
 }
 
 @freezed
-class Program extends _$Program {
+class Program with _$Program {
   factory Program({
     required String? acronym,
     required bool? active,
@@ -117,7 +116,7 @@ class Program extends _$Program {
 }
 
 @freezed
-class ParentProgram extends _$ParentProgram {
+class ParentProgram with _$ParentProgram {
   factory ParentProgram({
     required String? acronym,
     required bool? active,
@@ -132,7 +131,7 @@ class ParentProgram extends _$ParentProgram {
 }
 
 @freezed
-class PrimaryImage extends _$PrimaryImage {
+class PrimaryImage with _$PrimaryImage {
   factory PrimaryImage({
     required PrimaryImageFile? file,
     required int? id,
@@ -142,11 +141,11 @@ class PrimaryImage extends _$PrimaryImage {
   }) = _PrimaryImage;
 
   factory PrimaryImage.fromJson(Map<String, dynamic> json) =>
-      _PrimaryImageFromJson(json);
+      _$PrimaryImageFromJson(json);
 }
 
 @freezed
-class PrimaryImageFile extends _$PrimaryImageFile {
+class PrimaryImageFile with _$PrimaryImageFile {
   factory PrimaryImageFile({
     required String? fileExtension,
     required int? fileId,
@@ -154,11 +153,11 @@ class PrimaryImageFile extends _$PrimaryImageFile {
   }) = _PrimaryImageFile;
 
   factory PrimaryImageFile.fromJson(Map<String, dynamic> json) =>
-      _PrimaryImageFileFromJson(json);
+      _$PrimaryImageFileFromJson(json);
 }
 
 @freezed
-class LibraryItem extends _$LibraryItem {
+class LibraryItem with _$LibraryItem {
   factory LibraryItem({
     required List<LibraryItemFile>? files,
     required int? id,
@@ -179,7 +178,7 @@ class LibraryItem extends _$LibraryItem {
 }
 
 @freezed
-class LibraryItemFile extends _$LibraryItemFile {
+class LibraryItemFile with _$LibraryItemFile {
   factory LibraryItemFile({
     required String? fileExtension,
     required int? fileId,
@@ -196,7 +195,7 @@ class LibraryItemFile extends _$LibraryItemFile {
 }
 
 @freezed
-class CoInvestigator extends _$CoInvestigator {
+class CoInvestigator with _$CoInvestigator {
   factory CoInvestigator({
     required int? contactId,
     required int? displayOrder,
@@ -215,7 +214,7 @@ class CoInvestigator extends _$CoInvestigator {
 }
 
 @freezed
-class TaxonomyNode extends _$TaxonomyNode {
+class TaxonomyNode with _$TaxonomyNode {
   factory TaxonomyNode({
     required int? taxonomyNodeId,
     required int? taxonomyRootId,
@@ -234,7 +233,7 @@ class TaxonomyNode extends _$TaxonomyNode {
 }
 
 @freezed
-class SupportedMission extends _$SupportedMission {
+class SupportedMission with _$SupportedMission {
   factory SupportedMission({
     required int? lkuCodeId,
     required String? code,
@@ -248,7 +247,7 @@ class SupportedMission extends _$SupportedMission {
 }
 
 @freezed
-class LkuCodeType extends _$LkuCodeType {
+class LkuCodeType with _$LkuCodeType {
   factory LkuCodeType({
     required String? codeType,
     required String? description,
@@ -259,7 +258,7 @@ class LkuCodeType extends _$LkuCodeType {
 }
 
 @freezed
-class Country extends _$Country {
+class Country with _$Country {
   factory Country({
     required String? abbreviation,
     required int? countryId,
@@ -271,15 +270,14 @@ class Country extends _$Country {
 }
 
 @freezed
-class State extends _$State {
-  factory State({
+class States with _$States {
+  factory States({
     required String? abbreviation,
     required Country? country,
     required int? countryId,
     required String? name,
     required int? stateTerritoryId,
-  }) = _State;
+  }) = _States;
 
-  factory State.fromJson(Map<String, dynamic> json) => _$StateFromJson(json);
+  factory States.fromJson(Map<String, dynamic> json) => _$StatesFromJson(json);
 }
-*/

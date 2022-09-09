@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:freezed_bloc_demo/custom_widgets/custom_button.dart';
+import 'package:freezed_bloc_demo/custom_widgets/icon_button.dart';
 import 'package:freezed_bloc_demo/custom_widgets/text.dart';
 import 'package:freezed_bloc_demo/modals/detail_modal.dart';
 import 'package:freezed_bloc_demo/routes/router.dart';
@@ -31,6 +33,19 @@ class _ProgramDetailPageState extends State<ProgramDetailPage> {
           text: AppString.detailTitle,
           color: AppColor.white,
         ),
+        actions: [
+          CustomIconButton(
+              onPressed: () async {
+                final url = Uri.parse('${apiResult?.website}');
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(url,
+                      mode: LaunchMode.externalNonBrowserApplication);
+                } else {
+                  return null;
+                }
+              },
+              icon: FaIcon(FontAwesomeIcons.globe)),
+        ],
       ),
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -82,13 +97,13 @@ class _ProgramDetailPageState extends State<ProgramDetailPage> {
           ),
           CustomText(
             text:
-                "${apiResult.primaryTaxonomyNodes?.first['title']}(${apiResult.primaryTaxonomyNodes?.first['code']})",
+                "${apiResult.primaryTaxonomyNodes?.first.title}(${apiResult.primaryTaxonomyNodes?.first.code})",
             textAlign: TextAlign.start,
             fontSize: 18,
             fontWeight: FontWeight.w500,
           ),
           CustomText(
-            text: "${apiResult.primaryTaxonomyNodes?.first['definition']}",
+            text: "${apiResult.primaryTaxonomyNodes?.first.definition}",
             textAlign: TextAlign.start,
             fontSize: 15,
             color: Colors.grey.shade600,
@@ -134,87 +149,84 @@ class _ProgramDetailPageState extends State<ProgramDetailPage> {
             fontSize: 15,
             color: Colors.grey.shade600,
           ),
-          const CustomText(
-            text: AppString.information,
-            textAlign: TextAlign.start,
-            fontSize: 21,
-            fontWeight: FontWeight.w500,
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 8),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(
-                color: AppColor.primary,
-              ),
-            ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                IconButton(
-                  icon: FaIcon(
-                    FontAwesomeIcons.facebook,
-                    color: Colors.blue.shade900,
-                  ),
-                  onPressed: () async {
-                    final url = Uri.parse(apiResult.libraryItems?[1]['url']);
-                    if (await canLaunchUrl(url)) {
-                      await launchUrl(url);
-                    } else {
-                      throw "Could not launch $url";
-                    }
-                  },
+          (apiResult.libraryItems == null)
+              ? Container()
+              : const CustomText(
+                  text: AppString.information,
+                  textAlign: TextAlign.start,
+                  fontSize: 21,
+                  fontWeight: FontWeight.w500,
                 ),
-                IconButton(
-                  icon: const FaIcon(
-                    FontAwesomeIcons.twitter,
-                    color: Colors.blue,
+          (apiResult.libraryItems == null)
+              ? Container()
+              : Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(
+                      color: AppColor.primary,
+                    ),
                   ),
-                  onPressed: () async {
-                    final url = Uri.parse(apiResult.libraryItems?[2]['url']);
-                    if (await canLaunchUrl(url)) {
-                      await launchUrl(url);
-                    } else {
-                      throw "Could not launch $url";
-                    }
-                  },
-                ),
-                IconButton(
-                  icon: const FaIcon(
-                    FontAwesomeIcons.house,
-                    color: Colors.blueGrey,
+                  child: Wrap(
+                    alignment: WrapAlignment.spaceAround,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: List.generate(
+                      apiResult.libraryItems!.length,
+                      (index) {
+                        return (apiResult.libraryItems![index].url == null)
+                            ? Container()
+                            : CustomIconButton(
+                                icon: icon(apiResult.libraryItems![index].url),
+                                onPressed: () async {
+                                  final url = Uri.parse(
+                                      '${apiResult.libraryItems![index].url}');
+                                  if (await canLaunchUrl(url)) {
+                                    await launchUrl(url,
+                                        mode: LaunchMode
+                                            .externalNonBrowserApplication);
+                                  } else {
+                                    return null;
+                                  }
+                                },
+                              );
+                      },
+                    ),
                   ),
-                  onPressed: () async {
-                    final url = Uri.parse(apiResult.libraryItems?[3]['url']);
-                    if (await canLaunchUrl(url)) {
-                      await launchUrl(url,
-                          mode: LaunchMode.externalNonBrowserApplication);
-                    } else {
-                      throw "Could not launch $url";
-                    }
-                  },
                 ),
-                IconButton(
-                  icon: FaIcon(
-                    FontAwesomeIcons.globe,
-                    color: AppColor.black,
-                  ),
-                  onPressed: () async {
-                    final url = Uri.parse('${apiResult.website}');
-                    if (await canLaunchUrl(url)) {
-                      await launchUrl(url,
-                          mode: LaunchMode.externalNonBrowserApplication);
-                    } else {
-                      throw "Could not launch $url";
-                    }
-                  },
-                ),
-              ],
-            ),
+          CustomButton(
+            text: 'Management Department',
+            onTap: () {
+              context.router
+                  .push(ManagementDataRoute(detailModal: widget.detailModal));
+            },
           ),
         ],
       ),
     );
   }
+}
+
+Widget icon(String? url) {
+  if (url == null) {
+    return Align(
+        alignment: Alignment.topRight,
+        child: Container(
+          width: 0,
+        ));
+  } else if (url.contains('www.facebook.com')) {
+    return FaIcon(
+      FontAwesomeIcons.facebook,
+      color: Colors.blue.shade900,
+    );
+  } else if (url.contains('twitter.com')) {
+    return FaIcon(
+      FontAwesomeIcons.twitter,
+      color: Colors.blue,
+    );
+  } else if (url.contains('www.nasa.gov')) {
+    return FaIcon(
+      FontAwesomeIcons.house,
+      color: Colors.blue.shade900,
+    );
+  }
+  return Container();
 }
