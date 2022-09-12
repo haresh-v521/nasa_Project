@@ -5,6 +5,7 @@ import 'package:freezed_bloc_demo/repo/data_repo.dart';
 import 'package:freezed_bloc_demo/routes/router.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(
     BlocProvider<DataBloc>(
       create: (context) => DataBloc(

@@ -19,39 +19,60 @@ class _$AppRouter extends RootStackRouter {
   final Map<String, PageFactory> pagesMap = {
     SplashRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
-          routeData: routeData, child: const SplashPage());
+        routeData: routeData,
+        child: const SplashPage(),
+      );
     },
     HomeRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
-          routeData: routeData, child: const HomePage());
+        routeData: routeData,
+        child: const HomePage(),
+      );
     },
     DetailsRoute.name: (routeData) {
       final args = routeData.argsAs<DetailsRouteArgs>();
+
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: DetailsPage(key: args.key, apiResult: args.apiResult));
+        routeData: routeData,
+        child: DetailsPage(
+          key: args.key,
+          apiResult: args.apiResult,
+        ),
+      );
     },
     ProgramDetailRoute.name: (routeData) {
       final args = routeData.argsAs<ProgramDetailRouteArgs>();
+
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child:
-              ProgramDetailPage(key: args.key, detailModal: args.detailModal));
+        routeData: routeData,
+        child: ProgramDetailPage(
+          key: args.key,
+          detailModal: args.detailModal,
+        ),
+      );
     },
     AdditionalInfoRoute.name: (routeData) {
       final args = routeData.argsAs<AdditionalInfoRouteArgs>();
+
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child:
-              AdditionalInfoPage(key: args.key, detailModal: args.detailModal));
+        routeData: routeData,
+        child: AdditionalInfoPage(
+          key: args.key,
+          detailModal: args.detailModal,
+        ),
+      );
     },
     ManagementDataRoute.name: (routeData) {
       final args = routeData.argsAs<ManagementDataRouteArgs>();
+
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child:
-              ManagementDataPage(key: args.key, detailModal: args.detailModal));
-    }
+        routeData: routeData,
+        child: ManagementDataPage(
+          key: args.key,
+          detailModal: args.detailModal,
+        ),
+      );
+    },
   };
 
   @override
@@ -61,7 +82,7 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(DetailsRoute.name, path: 'details-page'),
         RouteConfig(ProgramDetailRoute.name, path: '/program-detail-page'),
         RouteConfig(AdditionalInfoRoute.name, path: '/additional-info-page'),
-        RouteConfig(ManagementDataRoute.name, path: '/management-data-page')
+        RouteConfig(ManagementDataRoute.name, path: '/management-data-page'),
       ];
 }
 
@@ -85,9 +106,14 @@ class HomeRoute extends PageRouteInfo<void> {
 /// [DetailsPage]
 class DetailsRoute extends PageRouteInfo<DetailsRouteArgs> {
   DetailsRoute({Key? key, required DataModal apiResult})
-      : super(DetailsRoute.name,
-            path: 'details-page',
-            args: DetailsRouteArgs(key: key, apiResult: apiResult));
+      : super(
+          DetailsRoute.name,
+          path: 'details-page',
+          args: DetailsRouteArgs(
+            key: key,
+            apiResult: apiResult,
+          ),
+        );
 
   static const String name = 'DetailsRoute';
 }
@@ -109,9 +135,14 @@ class DetailsRouteArgs {
 /// [ProgramDetailPage]
 class ProgramDetailRoute extends PageRouteInfo<ProgramDetailRouteArgs> {
   ProgramDetailRoute({Key? key, required DetailModal? detailModal})
-      : super(ProgramDetailRoute.name,
-            path: '/program-detail-page',
-            args: ProgramDetailRouteArgs(key: key, detailModal: detailModal));
+      : super(
+          ProgramDetailRoute.name,
+          path: '/program-detail-page',
+          args: ProgramDetailRouteArgs(
+            key: key,
+            detailModal: detailModal,
+          ),
+        );
 
   static const String name = 'ProgramDetailRoute';
 }
@@ -133,9 +164,14 @@ class ProgramDetailRouteArgs {
 /// [AdditionalInfoPage]
 class AdditionalInfoRoute extends PageRouteInfo<AdditionalInfoRouteArgs> {
   AdditionalInfoRoute({Key? key, required DetailModal? detailModal})
-      : super(AdditionalInfoRoute.name,
-            path: '/additional-info-page',
-            args: AdditionalInfoRouteArgs(key: key, detailModal: detailModal));
+      : super(
+          AdditionalInfoRoute.name,
+          path: '/additional-info-page',
+          args: AdditionalInfoRouteArgs(
+            key: key,
+            detailModal: detailModal,
+          ),
+        );
 
   static const String name = 'AdditionalInfoRoute';
 }
@@ -157,9 +193,14 @@ class AdditionalInfoRouteArgs {
 /// [ManagementDataPage]
 class ManagementDataRoute extends PageRouteInfo<ManagementDataRouteArgs> {
   ManagementDataRoute({Key? key, required DetailModal? detailModal})
-      : super(ManagementDataRoute.name,
-            path: '/management-data-page',
-            args: ManagementDataRouteArgs(key: key, detailModal: detailModal));
+      : super(
+          ManagementDataRoute.name,
+          path: '/management-data-page',
+          args: ManagementDataRouteArgs(
+            key: key,
+            detailModal: detailModal,
+          ),
+        );
 
   static const String name = 'ManagementDataRoute';
 }

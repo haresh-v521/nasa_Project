@@ -21,7 +21,7 @@ DetailModal _$DetailModalFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$DetailModal {
-  Project get project => throw _privateConstructorUsedError;
+  Project? get project => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,9 +35,9 @@ abstract class $DetailModalCopyWith<$Res> {
     DetailModal value,
     $Res Function(DetailModal) then,
   ) = _$DetailModalCopyWithImpl<$Res>;
-  $Res call({Project project});
+  $Res call({Project? project});
 
-  $ProjectCopyWith<$Res> get project;
+  $ProjectCopyWith<$Res>? get project;
 }
 
 /// @nodoc
@@ -56,13 +56,17 @@ class _$DetailModalCopyWithImpl<$Res> implements $DetailModalCopyWith<$Res> {
       project: project == freezed
           ? _value.project
           : project // ignore: cast_nullable_to_non_nullable
-              as Project,
+              as Project?,
     ));
   }
 
   @override
-  $ProjectCopyWith<$Res> get project {
-    return $ProjectCopyWith<$Res>(_value.project, (value) {
+  $ProjectCopyWith<$Res>? get project {
+    if (_value.project == null) {
+      return null;
+    }
+
+    return $ProjectCopyWith<$Res>(_value.project!, (value) {
       return _then(_value.copyWith(project: value));
     });
   }
@@ -76,10 +80,10 @@ abstract class _$$_DetailModalCopyWith<$Res>
     $Res Function(_$_DetailModal) then,
   ) = __$$_DetailModalCopyWithImpl<$Res>;
   @override
-  $Res call({Project project});
+  $Res call({Project? project});
 
   @override
-  $ProjectCopyWith<$Res> get project;
+  $ProjectCopyWith<$Res>? get project;
 }
 
 /// @nodoc
@@ -101,7 +105,7 @@ class __$$_DetailModalCopyWithImpl<$Res> extends _$DetailModalCopyWithImpl<$Res>
       project: project == freezed
           ? _value.project
           : project // ignore: cast_nullable_to_non_nullable
-              as Project,
+              as Project?,
     ));
   }
 }
@@ -115,7 +119,7 @@ class _$_DetailModal implements _DetailModal {
       _$$_DetailModalFromJson(json);
 
   @override
-  final Project project;
+  final Project? project;
 
   @override
   String toString() {
@@ -149,13 +153,13 @@ class _$_DetailModal implements _DetailModal {
 }
 
 abstract class _DetailModal implements DetailModal {
-  factory _DetailModal({required final Project project}) = _$_DetailModal;
+  factory _DetailModal({required final Project? project}) = _$_DetailModal;
 
   factory _DetailModal.fromJson(Map<String, dynamic> json) =
       _$_DetailModal.fromJson;
 
   @override
-  Project get project;
+  Project? get project;
   @override
   @JsonKey(ignore: true)
   _$$_DetailModalCopyWith<_$_DetailModal> get copyWith =>
@@ -180,7 +184,8 @@ mixin _$Project {
   int? get endTrl => throw _privateConstructorUsedError;
   String? get benefits => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  List<SupportedMission> get destinations => throw _privateConstructorUsedError;
+  List<SupportedMission>? get destinations =>
+      throw _privateConstructorUsedError;
   Map<String, dynamic>? get supportedMission =>
       throw _privateConstructorUsedError;
   int? get startYear => throw _privateConstructorUsedError;
@@ -230,7 +235,7 @@ abstract class $ProjectCopyWith<$Res> {
     int? endTrl,
     String? benefits,
     String? description,
-    List<SupportedMission> destinations,
+    List<SupportedMission>? destinations,
     Map<String, dynamic>? supportedMission,
     int? startYear,
     int? startMonth,
@@ -344,7 +349,7 @@ class _$ProjectCopyWithImpl<$Res> implements $ProjectCopyWith<$Res> {
       destinations: destinations == freezed
           ? _value.destinations
           : destinations // ignore: cast_nullable_to_non_nullable
-              as List<SupportedMission>,
+              as List<SupportedMission>?,
       supportedMission: supportedMission == freezed
           ? _value.supportedMission
           : supportedMission // ignore: cast_nullable_to_non_nullable
@@ -455,7 +460,7 @@ abstract class _$$_ProjectCopyWith<$Res> implements $ProjectCopyWith<$Res> {
     int? endTrl,
     String? benefits,
     String? description,
-    List<SupportedMission> destinations,
+    List<SupportedMission>? destinations,
     Map<String, dynamic>? supportedMission,
     int? startYear,
     int? startMonth,
@@ -570,7 +575,7 @@ class __$$_ProjectCopyWithImpl<$Res> extends _$ProjectCopyWithImpl<$Res>
       destinations: destinations == freezed
           ? _value._destinations
           : destinations // ignore: cast_nullable_to_non_nullable
-              as List<SupportedMission>,
+              as List<SupportedMission>?,
       supportedMission: supportedMission == freezed
           ? _value._supportedMission
           : supportedMission // ignore: cast_nullable_to_non_nullable
@@ -677,7 +682,7 @@ class _$_Project implements _Project {
     required this.endTrl,
     required this.benefits,
     required this.description,
-    required final List<SupportedMission> destinations,
+    required final List<SupportedMission>? destinations,
     required final Map<String, dynamic>? supportedMission,
     required this.startYear,
     required this.startMonth,
@@ -731,6 +736,7 @@ class _$_Project implements _Project {
     final value = _primaryTaxonomyNodes;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
+
     return EqualUnmodifiableListView(value);
   }
 
@@ -740,6 +746,7 @@ class _$_Project implements _Project {
     final value = _additionalTaxonomyNodes;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
+
     return EqualUnmodifiableListView(value);
   }
 
@@ -753,17 +760,21 @@ class _$_Project implements _Project {
   final String? benefits;
   @override
   final String? description;
-  final List<SupportedMission> _destinations;
+  final List<SupportedMission>? _destinations;
   @override
-  List<SupportedMission> get destinations {
+  List<SupportedMission>? get destinations {
+    final value = _destinations;
+    if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_destinations);
+
+    return EqualUnmodifiableListView(value);
   }
 
   final Map<String, dynamic>? _supportedMission;
   @override
   Map<String, dynamic>? get supportedMission {
     final value = _supportedMission;
+
     if (value == null) return null;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(value);
@@ -794,6 +805,7 @@ class _$_Project implements _Project {
     final value = _programManagers;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
+
     return EqualUnmodifiableListView(value);
   }
 
@@ -1020,7 +1032,7 @@ abstract class _Project implements Project {
       required final int? endTrl,
       required final String? benefits,
       required final String? description,
-      required final List<SupportedMission> destinations,
+      required final List<SupportedMission>? destinations,
       required final Map<String, dynamic>? supportedMission,
       required final int? startYear,
       required final int? startMonth,
@@ -1067,7 +1079,7 @@ abstract class _Project implements Project {
   @override
   String? get description;
   @override
-  List<SupportedMission> get destinations;
+  List<SupportedMission>? get destinations;
   @override
   Map<String, dynamic>? get supportedMission;
   @override

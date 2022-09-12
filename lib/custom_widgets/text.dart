@@ -9,14 +9,14 @@ class CustomText extends StatelessWidget {
   final double? fontSize;
   final Color? color;
   final TextAlign? textAlign;
-  const CustomText(
-      {Key? key,
-      required this.text,
-      this.fontWeight,
-      this.fontSize,
-      this.color,
-      this.textAlign})
-      : super(key: key);
+  const CustomText({
+    Key? key,
+    required this.text,
+    this.fontWeight,
+    this.fontSize,
+    this.color,
+    this.textAlign,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +26,13 @@ class CustomText extends StatelessWidget {
         text,
         textAlign: textAlign ?? TextAlign.center,
         style: GoogleFonts.marmelad(
-            textStyle: TextStyle(
-                overflow: TextOverflow.visible,
-                color: color ?? AppColor.black,
-                fontWeight: fontWeight,
-                fontSize: fontSize)),
+          textStyle: TextStyle(
+            overflow: TextOverflow.visible,
+            color: color ?? AppColor.black,
+            fontWeight: fontWeight,
+            fontSize: fontSize,
+          ),
+        ),
       ),
     );
   }

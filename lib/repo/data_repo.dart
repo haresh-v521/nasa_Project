@@ -19,6 +19,7 @@ class DataRepo {
         DataModal dataModel = DataModal.fromJson(model);
         result.add(dataModel);
       }
+
       return result;
     }
   }
@@ -29,6 +30,7 @@ class DataRepo {
       return null;
     } else {
       DetailModal detailModal = DetailModal.fromJson(jsonDecode(res.body));
+
       return detailModal;
       //print("..... : ${dataModel.title}");
       // ? return models;

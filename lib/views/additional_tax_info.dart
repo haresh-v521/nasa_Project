@@ -13,7 +13,7 @@ class AdditionalInfoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<TaxonomyNode>? apiData = detailModal?.project.additionalTaxonomyNodes;
+    List<TaxonomyNode>? apiData = detailModal?.project?.additionalTaxonomyNodes;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,

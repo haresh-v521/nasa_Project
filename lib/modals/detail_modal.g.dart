@@ -8,7 +8,9 @@ part of 'detail_modal.dart';
 
 _$_DetailModal _$$_DetailModalFromJson(Map<String, dynamic> json) =>
     _$_DetailModal(
-      project: Project.fromJson(json['project'] as Map<String, dynamic>),
+      project: json['project'] == null
+          ? null
+          : Project.fromJson(json['project'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_DetailModalToJson(_$_DetailModal instance) =>
@@ -32,8 +34,8 @@ _$_Project _$$_ProjectFromJson(Map<String, dynamic> json) => _$_Project(
       endTrl: json['endTrl'] as int?,
       benefits: json['benefits'] as String?,
       description: json['description'] as String?,
-      destinations: (json['destinations'] as List<dynamic>)
-          .map((e) => SupportedMission.fromJson(e as Map<String, dynamic>))
+      destinations: (json['destinations'] as List<dynamic>?)
+          ?.map((e) => SupportedMission.fromJson(e as Map<String, dynamic>))
           .toList(),
       supportedMission: json['supportedMission'] as Map<String, dynamic>?,
       startYear: json['startYear'] as int?,

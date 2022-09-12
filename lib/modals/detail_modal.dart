@@ -6,7 +6,7 @@ part 'detail_modal.g.dart';
 @freezed
 class DetailModal with _$DetailModal {
   factory DetailModal({
-    required Project project,
+    required Project? project,
   }) = _DetailModal;
 
   factory DetailModal.fromJson(Map<String, dynamic> json) =>
@@ -26,7 +26,7 @@ class Project with _$Project {
     required int? endTrl,
     required String? benefits,
     required String? description,
-    required List<SupportedMission> destinations,
+    required List<SupportedMission>? destinations,
     required Map<String, dynamic>? supportedMission,
     required int? startYear,
     required int? startMonth,

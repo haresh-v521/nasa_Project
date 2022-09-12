@@ -22,6 +22,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         centerTitle: true,
         title: CustomText(
@@ -36,6 +37,7 @@ class _HomePageState extends State<HomePage> {
         builder: (context, state) {
           if (state is DataInitialState) {
             context.read<DataBloc>().add(LoadDataEvent());
+
             return Center(
               child: SpinKitFadingCube(
                 color: AppColor.primary,
@@ -78,6 +80,7 @@ class _HomePageState extends State<HomePage> {
         itemCount: apiResult.length,
         itemBuilder: (context, index) {
           final DataModal dataModel = apiResult[index];
+
           return InkWell(
             onTap: () {
               context.router.push(
